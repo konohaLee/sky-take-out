@@ -1,6 +1,7 @@
 package com.sky.controller.admin;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
@@ -64,6 +65,16 @@ public class EmployeeController {
                 .build();
 //      该项目的返回结果统一封装成result形式
         return Result.success(employeeLoginVO);
+    }
+    //post请求，加上注解
+    @PostMapping()//（前面加过，这里不用加）
+    //emp..dto是以json传进来，要用一个requestbody注解获取一下
+    @ApiOperation("新增员工添加")
+    public Result save(@RequestBody EmployeeDTO employeeDTO){
+        log.info("新增员工:{}", employeeDTO);//占位符{}，会动态展示后面的东西
+        //controller调用service的方法
+        employeeService.save(employeeDTO);
+        return Result.success();
     }
 
     /**
