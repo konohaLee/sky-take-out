@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 @Data
 @Builder
+//加入了builder注解才能用构建器
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(description = "员工登录返回的数据格式")
