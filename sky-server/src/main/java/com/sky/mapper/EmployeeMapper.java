@@ -27,10 +27,16 @@ public interface EmployeeMapper {
     void insert(Employee employee);
 
     /**
-     * 分页查询
+     * 分页查询 持续层实现
      * @param employeePageQueryDTO
      * @return
      */
     //此处需要动态查询，不好直接写查询，在映射文件里写
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 启用或禁用账号 持续层实现
+     * @param employee
+     */
+    void update(Employee employee);
 }

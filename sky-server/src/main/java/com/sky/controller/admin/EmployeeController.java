@@ -88,6 +88,14 @@ public class EmployeeController {
         PageResult pageResult =  employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
+    //路径参数PathV.. 这个东西是http请求里面的最后一个元素，所以叫路径参数
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status,Long id){
+        log.info("启用禁用员工账号：{}，{}", status, id);
+        employeeService.startOrStop(status,id);
+        return  Result.success();
+    }
 
     /**
      * 退出

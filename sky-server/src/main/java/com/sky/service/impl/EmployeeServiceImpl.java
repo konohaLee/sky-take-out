@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeMapper employeeMapper;
 
     /**
-     * 员工登录
+     * 员工登录 实现
      *
      * @param employeeLoginDTO
      * @return
@@ -68,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
-     * 新增员工
+     * 新增员工 实现
      * @param employeeDTO
      */
     @Override
@@ -101,5 +101,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         long total = page.getTotal();
         List<Employee> records = page.getResult();
         return new PageResult(total,records);
+    }
+
+    /**
+     * 启用或禁用员工账号 实现
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        //update emplyee set status = ? where id = ?
+        //构造一个实体对象，将实体对象传持续层进行sql操作
+        Employee employee = Employee.builder()
+                .id(id).
+                status(status).
+                build();
+        employeeMapper.update(employee);
     }
 }
